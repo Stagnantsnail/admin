@@ -1,0 +1,47 @@
+n = int(input())
+m = int(input())
+num = list(input())
+d={
+   0:'0',
+   1:'1',
+   2:'2',
+   3:'3',
+   4:'4',
+   5:'5',
+   6:'6',
+   7:'7',
+   8:'8',
+   9:'9',
+   10:'A',
+   11:'B',
+   12:'C',
+   13:'D',
+   14:'E',
+   15:'F' 
+   }
+ 
+flg = 0
+if n<2 or n>16 or m<2 or m>16 :
+   flg = 1
+ 
+temp = 0  
+for i in range(len(num)-1,-1,-1):                   
+        for j in range(16):                           
+            if d[j] == num[i]:
+                if j >= n:
+                    flg=1
+                    break
+                else:
+                    break                  
+        temp += j * n**(len(num)-i -1)
+if flg == 1 :
+    print('illegal input')
+else:
+    li = []    
+    while(temp != 0):        
+        t1 = temp%m
+        temp = temp//m       
+        li.append(t1)
+
+    for i in range(len(li)-1,-1,-1):
+        print(d[li[i]],end='')
